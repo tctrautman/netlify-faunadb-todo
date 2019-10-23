@@ -4,7 +4,6 @@ import AppHeader from "./components/AppHeader";
 import SettingsMenu from "./components/SettingsMenu";
 import SettingsIcon from "./components/SettingsIcon";
 import api from "./utils/api";
-import getTodoId from "./utils/getId";
 import sortByDate from "./utils/sortByDate";
 import isLocalHost from "./utils/isLocalHost";
 import "./App.css";
@@ -362,4 +361,12 @@ function removeOptimisticTodo(todos) {
   return todos.filter(todo => {
     return todo.ref;
   });
+}
+
+export function getTodoId(todo) {
+  if (!todo.ref) {
+    return null;
+  }
+
+  return todo.ref["@ref"].id;
 }
